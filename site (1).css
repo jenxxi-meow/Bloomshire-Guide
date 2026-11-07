@@ -1,0 +1,184 @@
+/* Shared styles for every page. Pixel art look: pixel font, square boxes with hard shadows, pixel flower background. */
+:root {
+  --bg: #bfe6a8;
+  --fg: #3a2f3d;
+  --muted: #6b5a70;
+  --ink: #4a3b4f;
+  --surface: #fff8e7;
+  --field: #fff8e7;
+  --accent: #ff7aa8;
+  --accent-soft: #ffd3e3;
+  --accent-ink: #b73566;
+  --perfect: #1b5e2f;
+  --perfect-bg: #c9f0c2;
+  --good: #7a5200;
+  --good-bg: #ffe9a8;
+  --mark: #fff08a;
+  --focus: #b73566;
+  --pattern-opacity: 0.8;
+  --font: "Pixelify Sans", "Trebuchet MS", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1b2733;
+    --fg: #f3eee0;
+    --muted: #a9b4c2;
+    --ink: #0c1119;
+    --surface: #2b3a4d;
+    --field: #2b3a4d;
+    --accent: #ff8fb8;
+    --accent-soft: #4a2f44;
+    --accent-ink: #ff9cc0;
+    --perfect: #8ff0b8;
+    --perfect-bg: #1f4a35;
+    --good: #ffd978;
+    --good-bg: #54420f;
+    --mark: #6b5a12;
+    --focus: #ff9cc0;
+    --pattern-opacity: 0.3;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1b2733;
+  --fg: #f3eee0;
+  --muted: #a9b4c2;
+  --ink: #0c1119;
+  --surface: #2b3a4d;
+  --field: #2b3a4d;
+  --accent: #ff8fb8;
+  --accent-soft: #4a2f44;
+  --accent-ink: #ff9cc0;
+  --perfect: #8ff0b8;
+  --perfect-bg: #1f4a35;
+  --good: #ffd978;
+  --good-bg: #54420f;
+  --mark: #6b5a12;
+  --focus: #ff9cc0;
+  --pattern-opacity: 0.3;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 20px;
+  line-height: 1.45;
+  padding-block: 0 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+/* Pixel flowers, grass tufts and sparkles */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--pattern-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%23ff7aa8' d='M5 4h1v1h-1zM4 5h1v1h-1zM6 5h1v1h-1zM5 6h1v1h-1z'/%3E%3Cpath fill='%23ffd85e' d='M5 5h1v1h-1z'/%3E%3Cpath fill='%23b79bff' d='M21 16h1v1h-1zM20 17h1v1h-1zM22 17h1v1h-1zM21 18h1v1h-1z'/%3E%3Cpath fill='%23ffd85e' d='M21 17h1v1h-1z'/%3E%3Cpath fill='%236ec6ff' d='M27 26h1v1h-1zM26 27h1v1h-1zM28 27h1v1h-1zM27 28h1v1h-1z'/%3E%3Cpath fill='%23ffd85e' d='M27 27h1v1h-1z'/%3E%3Cpath fill='%2368b85a' d='M12 24h1v2h-1zM14 23h1v3h-1zM16 24h1v2h-1zM12 26h5v1h-5zM14 5h1v2h-1zM16 4h1v3h-1zM18 5h1v2h-1zM14 7h5v1h-5z'/%3E%3Cpath fill='%23fff8e7' d='M27 8h1v3h-1zM26 9h3v1h-3zM8 18h1v1h-1zM9 19h1v1h-1zM8 20h1v1h-1zM7 19h1v1h-1z'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  image-rendering: pixelated;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 10;
+}
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.wrap { max-width: 1100px; margin: 0 auto; }
+
+/* Nav bar */
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+  margin-top: 18px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  font-size: 1rem;
+}
+.nav .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+.nav .brand svg { width: 18px; height: 29px; flex: none; }
+.nav a.link { color: var(--muted); text-decoration: none; padding-block: 2px; border-bottom: 3px solid transparent; }
+.nav a.link:hover { color: var(--fg); border-bottom-color: var(--accent); }
+.nav a.link[aria-current="page"] { color: var(--fg); border-bottom-color: var(--accent); }
+
+/* Light/dark switch */
+.nav .toggle {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 2px 12px 3px;
+  color: var(--fg);
+  background: var(--accent-soft);
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer;
+}
+.nav .toggle:hover { background: var(--accent); color: var(--ink); }
+.nav .toggle:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.nav .toggle:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Headings and home */
+h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+.intro { padding-block: 48px 32px; }
+.intro h1 { font-size: clamp(2.2rem, 8vw, 3.4rem); text-shadow: 3px 3px 0 var(--accent); }
+.intro p { margin: 16px 0 0; color: var(--fg); max-width: 40ch; font-size: 1.15rem; }
+.sprites { display: flex; gap: 14px; margin-top: 22px; }
+.sprites svg { width: 25px; height: 40px; }
+
+.guides { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 22px; }
+.guide {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 16px;
+  align-items: center;
+  padding: 18px;
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  text-decoration: none;
+}
+.guide:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.guide:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+.guide .ico {
+  grid-row: 1 / span 3;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  background: var(--accent-soft);
+  border: 3px solid var(--ink);
+}
+.guide .ico svg { width: 32px; height: 32px; }
+.guide h2 { font-weight: 700; font-size: 1.3rem; margin: 0; }
+.guide p { margin: 0; color: var(--muted); font-size: 1rem; }
+.guide .meta { font-size: 0.9rem; color: var(--accent-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.foot { margin: 48px 0 0; font-size: 0.9rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .guide:hover, .guide:active { transform: none; } }
