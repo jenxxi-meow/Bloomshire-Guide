@@ -123,22 +123,6 @@ a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .nav a.link:hover { color: var(--fg); border-bottom-color: var(--accent); }
 .nav a.link[aria-current="page"] { color: var(--fg); border-bottom-color: var(--accent); }
 
-/* Light/dark switch */
-.nav .toggle {
-  font: inherit;
-  font-size: 0.9rem;
-  padding: 2px 12px 3px;
-  color: var(--fg);
-  background: var(--accent-soft);
-  border: 3px solid var(--ink);
-  border-radius: 0;
-  box-shadow: 3px 3px 0 var(--ink);
-  cursor: pointer;
-}
-.nav .toggle:hover { background: var(--accent); color: var(--ink); }
-.nav .toggle:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
-.nav .toggle:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-
 /* Headings and home */
 h1 {
   font-weight: 700;

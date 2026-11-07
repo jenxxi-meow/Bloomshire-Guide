@@ -1,0 +1,80 @@
+/* NPC Gift Guide page styles. Pixel look: square boxes, hard shadows, square chips. */
+header.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  margin-top: 14px;
+  padding: 18px 0 0;
+  background: var(--bg);
+}
+.search-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+#q {
+  flex: 1 1 300px;
+  min-width: 0;
+  font: inherit;
+  padding: 10px 14px;
+  color: var(--fg);
+  background: var(--field);
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+#q::placeholder { color: var(--muted); }
+#q:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.count { color: var(--fg); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+
+.cols, .row {
+  display: grid;
+  grid-template-columns: 11rem 1fr 1fr;
+  gap: 8px 24px;
+}
+.cols {
+  margin-top: 16px;
+  padding: 8px 20px 10px;
+  border-bottom: 3px solid var(--ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.cols .n { color: var(--fg); }
+.cols .p { color: var(--perfect); }
+.cols .g { color: var(--good); }
+.cols span { font-weight: 400; margin-left: 4px; }
+
+.row {
+  padding: 14px 20px;
+  margin-top: 14px;
+  background: var(--surface);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.row > div { min-width: 0; }
+.npc { font-weight: 700; font-size: 1.3rem; line-height: 1.2; }
+.npc small { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; }
+.items { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; }
+.chip { padding: 1px 10px 2px; font-size: 1rem; border: 2px solid currentColor; overflow-wrap: anywhere; }
+.perfect .chip { background: var(--perfect-bg); color: var(--perfect); }
+.good .chip { background: var(--good-bg); color: var(--good); }
+.chip.any { border-style: dashed; }
+mark { background: var(--mark); color: inherit; }
+.label { display: none; }
+.empty { padding: 56px 0; }
+
+@media (max-width: 760px) {
+  body { font-size: 19px; }
+  .cols { display: none; }
+  header.top { padding-bottom: 12px; border-bottom: 3px solid var(--ink); }
+  .row { grid-template-columns: 1fr; gap: 10px; padding: 14px 16px; }
+  .npc small { display: inline; margin-left: 6px; }
+  .label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .perfect .label { color: var(--perfect); }
+  .good .label { color: var(--good); }
+}

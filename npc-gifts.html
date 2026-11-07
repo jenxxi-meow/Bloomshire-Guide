@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NPC Gift Guide | Bloomshire Game Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="npc-gifts.css">
+<style>
+  :root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav" aria-label="Site">
+    <a class="brand" href="index.html"><svg viewBox="0 0 5 8" shape-rendering="crispEdges" aria-hidden="true"><path fill="#ff7aa8" d="M2 0h1v1h-1zM1 1h1v1h-1zM3 1h1v1h-1zM0 2h1v1h-1zM4 2h1v1h-1zM1 3h1v1h-1zM3 3h1v1h-1zM2 4h1v1h-1z"/><path fill="#ffd85e" d="M2 1h1v1h-1zM1 2h3v1h-3zM2 3h1v1h-1z"/><path fill="#68b85a" d="M2 5h1v3h-1zM3 5h1v1h-1zM1 6h1v1h-1z"/></svg>Bloomshire Game Guide</a>
+    <a class="link" href="index.html">Home</a>
+    <a class="link" href="npc-gifts.html" aria-current="page">NPC Gift Guide</a>
+  </nav>
+
+  <header class="top">
+    <h1>NPC Gift Guide</h1>
+    <div class="search-row">
+      <input id="q" type="search" placeholder="Search an NPC or an item" autocomplete="off" aria-label="Search NPCs or items">
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <div class="cols" aria-hidden="true">
+      <div class="n">NPC</div>
+      <div class="p">Perfect <span>+80</span></div>
+      <div class="g">Good <span>+45</span></div>
+    </div>
+  </header>
+
+  <div id="list"></div>
+  <p class="empty" id="empty" hidden>Nothing matches that search.</p>
+  <p class="foot">Unofficial fan guide. Not affiliated with Bloomshire.</p>
+</div>
+<script src="npc-gifts-data.js"></script>
+<script src="npc-gifts.js"></script>
+</body>
+</html>
