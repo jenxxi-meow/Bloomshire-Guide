@@ -1,0 +1,245 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>NPC Gift Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap">
+<style>
+/* Layout: one quiet table. Search on top, hairline rows, plain text lists. Color only marks Perfect vs Good. */
+:root {
+  --bg: #fbfbf9;
+  --fg: #1c1f1d;
+  --muted: #727873;
+  --line: #e6e7e2;
+  --perfect: #17704f;
+  --good: #8c6a1f;
+  --mark: #fff0a8;
+  --field: #f1f2ee;
+  --focus: #17704f;
+  --font: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161917;
+    --fg: #eceeea;
+    --muted: #8f9791;
+    --line: #2a2f2c;
+    --perfect: #7fd3ae;
+    --good: #e3bd6a;
+    --mark: #5c4f10;
+    --field: #202522;
+    --focus: #7fd3ae;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161917;
+  --fg: #eceeea;
+  --muted: #8f9791;
+  --line: #2a2f2c;
+  --perfect: #7fd3ae;
+  --good: #e3bd6a;
+  --mark: #5c4f10;
+  --field: #202522;
+  --focus: #7fd3ae;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 19px;
+  line-height: 1.5;
+  padding-block: 0 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 10;
+}
+.wrap { max-width: 1100px; margin: 0 auto; }
+
+header.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: var(--bg);
+  padding-block: 28px 0;
+}
+h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 16px; }
+.search-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+#q {
+  flex: 1 1 300px;
+  min-width: 0;
+  font: inherit;
+  padding: 13px 16px;
+  color: var(--fg);
+  background: var(--field);
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+#q::placeholder { color: var(--muted); }
+#q:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.count { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+
+.cols {
+  display: grid;
+  grid-template-columns: 11rem 1fr 1fr;
+  gap: 24px;
+  padding: 18px 0 10px;
+  border-bottom: 1px solid var(--fg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cols .n { color: var(--muted); }
+.cols .p { color: var(--perfect); }
+.cols .g { color: var(--good); }
+.cols span { font-weight: 400; opacity: 0.8; margin-left: 4px; }
+
+.row {
+  display: grid;
+  grid-template-columns: 11rem 1fr 1fr;
+  gap: 6px 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.row > div { min-width: 0; }
+.npc { font-weight: 700; }
+.npc small { font-weight: 400; color: var(--muted); font-size: 0.85em; margin-left: 4px; }
+.items { overflow-wrap: anywhere; }
+.any { font-style: italic; color: var(--muted); }
+mark { background: var(--mark); color: inherit; border-radius: 2px; }
+.label { display: none; }
+.empty { padding: 56px 0; color: var(--muted); }
+
+@media (max-width: 760px) {
+  body { font-size: 18px; }
+  header.top { padding-block-start: 20px; }
+  .cols { display: none; }
+  header.top { border-bottom: 1px solid var(--fg); padding-bottom: 14px; }
+  .row { grid-template-columns: 1fr; gap: 8px; padding: 16px 0; }
+  .label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .perfect .label { color: var(--perfect); }
+  .good .label { color: var(--good); }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>NPC Gift Guide</h1>
+    <div class="search-row">
+      <input id="q" type="search" placeholder="Search an NPC or an item" autocomplete="off" aria-label="Search NPCs or items">
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <div class="cols" aria-hidden="true">
+      <div class="n">NPC</div>
+      <div class="p">Perfect <span>+80</span></div>
+      <div class="g">Good <span>+45</span></div>
+    </div>
+  </header>
+
+  <div id="list"></div>
+  <p class="empty" id="empty" hidden>Nothing matches that search.</p>
+</div>
+
+<script>
+var DATA = [
+  ["Pell", "", "Roast Dinner, Hearty Stew, Blackberry Cobbler, Moonstone", "Wood, Bread, Baked Potato, Corn on the Cob, any dish"],
+  ["Bram", "smith", "Ruby, Gold Ore, Spicy Tacos, Hot Pepper", "any ore, Hearty Stew, Roast Dinner, Bread"],
+  ["Quill", "", "Diamond, Golden Fish, Star Fruit, Saffron", "Emerald, Sapphire, Grape Juice, Cake, Strawberry Tart"],
+  ["Wren", "", "Fish Tacos, Sashimi, Golden Fish, Tiger Trout", "any fish, Fried Fish, Corn on the Cob, Bread, Hash Browns"],
+  ["Juniper", "", "Glowcap Mushroom, Silvercap Mushroom, Saffron, Aloe, Amethyst", "any forage, Marigold, Sunflower, Garden Salad, Butterfly"],
+  ["Rosa", "", "Strawberry Tart, Cake, Rose Quartz, Moonstone, Fruit Jam", "Bread, Blueberry, Sunflower, Marigold, Grape Juice, Berry Pie"],
+  ["Marlow", "", "Parsnip Soup, Carrot Cake, Hearty Stew", "Carrot, any fish, Bread"],
+  ["Maren", "Elder", "Pumpkin Soup, Bread, Rose Quartz", "any dish"],
+  ["Tamsin", "", "Wheat, Strawberry, Blackberry", "any crop"],
+  ["Hazel", "", "Star Fruit, Sunflower, Cantaloupe", "any crop"],
+  ["Odette", "", "Cake, Grape Juice", "any dish"],
+  ["Tilly", "tailor", "Amethyst, Rose Quartz, Butterfly", "Sunflower, Marigold"],
+  ["Farthing", "", "Gold Ore, Diamond", "Emerald, Sapphire"],
+  ["Marven", "", "Moonstone, Sapphire", "any fish"],
+  ["Dunn", "", "Hearty Stew, Topaz", "any ore"],
+  ["Silas", "", "Marsh Eel, Glowcap Mushroom", "any fish"],
+  ["Wick", "", "Marsh Eel", "Bread"],
+  ["Rowan", "", "Watermelon, Fruit Salad", "any crop"],
+  ["Hollis", "", "Pumpkin, Cabbage, Carrot", "Wheat, Corn"],
+  ["Greta", "", "Berry Pie, Strawberry Tart", "Marigold, Sunflower"],
+  ["Mabel", "", "Bread, Blueberry", "Corn"],
+  ["Ansel", "", "Moonstone, Pumpkin Soup", "Sunflower"],
+  ["Dara", "", "Blackberry Cobbler, Berry Pie", "Blueberry, Strawberry"],
+  ["Cole", "", "Hearty Stew, Roast Dinner", "any dish"],
+  ["Fenwick", "", "Corn on the Cob, Casserole", "Bread"],
+  ["Ivy", "", "Marigold, Sunflower", "Saffron, Strawberry"],
+  ["Otto", "", "Fried Fish, Hash Browns", "Popcorn"],
+  ["Lena", "", "Cabbage, Cauliflower, Broccoli", "any crop"],
+  ["Hugo", "", "Wheat, Bread, Cake", "Corn"],
+  ["Jory", "", "Golden Fish, Ghost Catfish, Grape Juice", "any fish"],
+  ["Nixie", "mermaid", "Quartz, Rose Quartz, Diamond, Sapphire", "any ore"],
+  ["Jasper", "♂→♀", "Fried Fish, Hearty Stew, Sapphire, Grape Juice", "Wood, any fish, Bread, Corn on the Cob"],
+  ["Felix", "♂→♀", "Cake, Strawberry Tart, Grape Juice, Rose Quartz", "Bread, Sunflower, Marigold, Berry Pie, Fruit Jam"],
+  ["Rhys", "♂→♀", "Pumpkin Soup, Roast Dinner, Baked Potato, Star Fruit", "any crop, Bread, Hearty Stew, Corn on the Cob"],
+  ["Faelan", "elf → ♀", "Moonstone, Star Fruit, Sunflower, Blueberry", "any forage, Bread, Fruit Salad, Amethyst"],
+  ["Clara", "♀→♂", "Strawberry, Blackberry Cobbler, Wheat, Fruit Jam", "any crop, Blueberry, Marigold, Sunflower"],
+  ["Elsie", "♀→♂", "Amethyst, Moonstone, Sunflower, Grape Juice", "Marigold, Saffron, Cake, Garden Salad, Fruit Salad"],
+  ["Willa", "♀→♂", "Sunflower, Marigold, Berry Pie, Blueberry", "any forage, Strawberry, Bread, Fruit Smoothie"],
+  ["Liora", "elf → ♂", "Cake, Strawberry Tart, Rose Quartz, Grape Juice", "Marigold, Sunflower, Berry Pie, Fruit Jam, Amethyst"]
+];
+
+var listEl = document.getElementById("list");
+var emptyEl = document.getElementById("empty");
+var countEl = document.getElementById("count");
+var input = document.getElementById("q");
+
+function esc(s) {
+  return s.replace(/[&<>"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+  });
+}
+function hl(text, q) {
+  if (!q) return esc(text);
+  var i = text.toLowerCase().indexOf(q);
+  if (i < 0) return esc(text);
+  return esc(text.slice(0, i)) + "<mark>" + esc(text.slice(i, i + q.length)) + "</mark>" + esc(text.slice(i + q.length));
+}
+function items(str, q) {
+  return str.split(", ").map(function (it) {
+    var h = hl(it, q);
+    return it.indexOf("any ") === 0 ? '<span class="any">' + h + "</span>" : h;
+  }).join(", ");
+}
+function render() {
+  var q = input.value.trim().toLowerCase();
+  var out = [];
+  DATA.forEach(function (r) {
+    var hay = (r[0] + " " + r[1] + " " + r[2] + ", " + r[3]).toLowerCase();
+    if (q && hay.indexOf(q) < 0) return;
+    out.push(
+      '<div class="row">' +
+        '<div class="npc">' + hl(r[0], q) + (r[1] ? "<small>" + hl(r[1], q) + "</small>" : "") + "</div>" +
+        '<div class="perfect"><span class="label">Perfect +80</span><div class="items">' + items(r[2], q) + "</div></div>" +
+        '<div class="good"><span class="label">Good +45</span><div class="items">' + items(r[3], q) + "</div></div>" +
+      "</div>"
+    );
+  });
+  listEl.innerHTML = out.join("");
+  emptyEl.hidden = out.length > 0;
+  countEl.textContent = out.length + " of " + DATA.length;
+}
+input.addEventListener("input", render);
+render();
+</script>
+
+</body></html>
